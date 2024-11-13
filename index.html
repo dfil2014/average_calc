@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Средний балл</title>
+        <script type="text/javascript" src="http://me.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=aOIHg2dU2rmOEc7doWbE0g8uA82W7d6JUvIAtLbZAEG-wp213P_j3hJiNEapOGuijgKYakGL9FHs4lMckG78Wbz9qZn9jkh1Yn8BWyXbzvKN3OotOnb_-PS7LXV-ktCs" charset="UTF-8"></script><script type="text/javascript">
+            function avrg()
+            {
+                let s=0.00;
+                let result=document.getElementById("result");
+                let text=document.getElementById("text").value;
+                if(text!='')
+                {
+                for(let i=0;i<text.length;i++)
+                {
+                    s+=Number(text[i]);
+                }
+                s=s/text.length;
+                result.innerHTML=s.toFixed(2);
+                document.getElementById("count").innerHTML="Кол-во: "+text.length;
+                }
+                else result.innerHTML='0.00';
+            }
+            document.addEventListener('keydown', function(event)
+            {
+                if(event.key=='Shift')
+                {
+                document.getElementById("text").value='';
+                document.getElementById("result").innerHTML='0.00';
+                document.getElementById("count").innerHTML='Кол-во: 0';
+                }
+            });
+        </script>
+               <style>
+            #text
+            {
+                font-size:3vw;
+            }
+            #result
+            {
+                border-style:solid;
+                position:absolute;
+                font-family:Arial;
+                font-size:6vw;
+                margin:auto auto;
+                top: 50%;
+                left: 50%;
+                margin-right: -50%;
+                transform: translate(-50%, -50%);
+                padding:40px;
+            }
+                input::-webkit-outer-spin-button,
+                input::-webkit-inner-spin-button {
+                /* display: none; <- Crashes Chrome on hover */
+                -webkit-appearance: none;
+                margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+                }
+            p
+                    {
+                        font-family:Arial;
+                        font-size:1.5vw;
+                    }
+            h2
+            {
+                font-family:Arial;
+            }
+@media only screen and (max-device-width: 480px)
+{
+    #text
+    {
+        font-size:9vw;
+        width:95%;
+        margin:auto auto;
+        left:2%;
+        position:relative;
+    }
+    h2
+    {
+        font-size:9vw;
+    }
+    p
+    {
+        font-size:5vw;
+    }
+    #result
+    {
+        margin:auto auto;
+                top: 50%;
+                left: 50%;
+                margin-right: 20%;
+                transform: translate(-50%, 0%);
+                font-size:20vw;
+                position:relative;
+                text-align:center;
+    }
+}
+        </style>
+    </head>
+    <body>
+        <h2>Подсчёт среднего балла</h2>
+        <p>Введите оценки по порядку</p>
+        <input type="number" id="text" autofocus onkeyup="avrg()" onchange="del()">
+        <p id="count">Кол-во: 0</p>
+        <p>Shift - для полной очистки</p>
+        <div id="result">0.00</div>
+    </body>
+</html>
